@@ -28,6 +28,19 @@
 
     // je code hier...
 
+    $servername = "localhost";
+    $username = "prac";
+    $password = "";
+    $sanitizedMessage = htmlspecialchars($userMessage, ENT_QUOTES, 'UTF-8');
+
+    $conn = new mysqli($servername, $username, $password, "prac_sanitization");
+    $stmt = $conn->prepare("INSERT INTO message (message) VALUES (?)");
+    $stmt->bind_param("s", $sanitizedMessage);
+    $stmt->execute();
+ 
+
+
+
 ?>
 
     <hr>
